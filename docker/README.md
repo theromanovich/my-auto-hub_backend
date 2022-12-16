@@ -1,6 +1,5 @@
 
-docker-compose -f docker-compose.system.dev.yml up
-docker-compose -f docker-compose.app.dev.yml up
+docker-compose -f docker-compose.dev.yml up
 
 Stop the container(s) using the following command:
 docker-compose down
