@@ -1,5 +1,5 @@
 {
-  "name": "my-project",
+  "name": "strapi-mysql",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -10,12 +10,17 @@
     "strapi": "strapi"
   },
   "devDependencies": {},
-  "dependencies": {},
+  "dependencies": {
+    "@strapi/strapi": "4.5.3",
+    "@strapi/plugin-users-permissions": "4.5.3",
+    "@strapi/plugin-i18n": "4.5.3",
+    "mysql": "2.18.1"
+  },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "6851b1fa-10ee-40e9-b0d5-bdc0d621df7d"
+    "uuid": "e047bf5c-d6d5-47ba-a358-b919622333db"
   },
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
