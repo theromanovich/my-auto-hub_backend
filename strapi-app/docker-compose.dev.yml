@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  strapi.app:
+    container_name: strapi.app.dev
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    restart: always
+    environment:
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: strapi.db
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      APP_KEYS: ${APP_KEYS}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - .:/var/www/app
+      - /var/www/app/node_modules
+    ports:
+      - '1337:1337'
+    networks:
+      - strapi
+    depends_on:
+      - strapi.db
+
+  strapi.db:
+    container_name: strapi.db.dev
+    restart: unless-stopped
+    image: mysql:8.0
+    command:
+      - --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - strapi-db-volume:/var/lib/mysql
+      - ./db/01.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - '3306:3306'
+    networks:
+      - strapi
+#    healthcheck:
+#      test: ["CMD", "strapi.db.dev", "-U", "${DATABASE_USERNAME}", "--password=${DATABASE_PASSWORD}"]
+#      interval: 5s
+#      timeout: 2s
+#      retries: 5
+
+volumes:
+  strapi-db-volume:
+    driver: local
+
+networks:
+  strapi:
+    driver: bridge

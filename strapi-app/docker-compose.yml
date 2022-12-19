@@ -1,0 +1,119 @@
+#version: "3.8"
+#
+## path: ./docker-compose.yml
+#
+#services:
+#  strapi:
+#    container_name: strapi
+#    build: .
+#    image: strapi:latest
+#    image: strapi:latest
+#    restart: unless-stopped
+#    env_file: .env
+#    environment:
+#      DATABASE_CLIENT: ${DATABASE_CLIENT}
+#      DATABASE_HOST: strapiDB
+#      DATABASE_PORT: ${DATABASE_PORT}
+#      DATABASE_NAME: ${DATABASE_NAME}
+#      DATABASE_USERNAME: ${DATABASE_USERNAME}
+#      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+#      JWT_SECRET: ${JWT_SECRET}
+#      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+#      APP_KEYS: ${APP_KEYS}
+#      NODE_ENV: ${NODE_ENV}
+#    volumes:
+#      - ./config:/opt/app/config
+#      - ./src:/opt/app/src
+#      - ./package.json:/opt/package.json
+#      - ./yarn.lock:/opt/yarn.lock
+#      - ./.env:/opt/app/.env
+#      - ./public/uploads:/opt/app/public/uploads
+#    ports:
+#      - '1337:1337'
+#    networks:
+#      - strapi
+#    depends_on:
+#      - strapiDB
+#
+#  strapiDB:
+#    container_name: strapiDB
+#    platform: linux/amd64 #for platform error on Apple M1 chips
+#    restart: unless-stopped
+#    env_file: .env
+#    image: mysql:5.7
+#    command: --default-authentication-plugin=mysql_native_password
+#    environment:
+#      MYSQL_USER: ${DATABASE_USERNAME}
+#      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+#      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+#      MYSQL_DATABASE: ${DATABASE_NAME}
+#    volumes:
+#      - strapi-data:/var/lib/mysql
+#      #- ./data:/var/lib/mysql # if you want to use a bind folder
+#    ports:
+#      - '3306:3306'
+#    networks:
+#      - strapi
+#
+#volumes:
+#  strapi-data:
+#
+#networks:
+#  strapi:
+#    name: Strapi
+#    driver: bridge
+#
+#
+#services:
+#  strapi-app-dev:
+#    container_name: strapi-app-dev
+#    hostname: strapi-app-dev
+#    build:
+#      context: ../strapi-mysql
+#      dockerfile: ./Dockerfile
+#    restart: always
+#    volumes:
+#      - ../strapi-mysql:/var/www/strapi-roinvesting
+#      - /var/www/strapi-roinvesting/node_modules
+#    environment:
+#      - DATABASE_CLIENT=mysql
+#      - DATABASE_HOST=strapi-mysql
+#      - DATABASE_PORT=3306
+#      - DATABASE_NAME=strapi_roinvesting
+#      - DATABASE_USERNAME=user
+#      - DATABASE_PASSWORD=123456
+#    depends_on:
+#      - strapi-mysql
+#    ports:
+#      - "1337:1337"
+#    networks:
+#      - roinvesting
+#
+#  strapi-mysql:
+#    image: mysql:8.0
+#    container_name: strapi-mysql
+#    command:
+#      - --default-authentication-plugin=mysql_native_password
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=admin
+#    volumes:
+#      - mysql-volume:/var/lib/mysql
+#      - ./db/01.sql:/docker-entrypoint-initdb.d/init.sql
+#    ports:
+#      - "3306:3306"
+#    networks:
+#      - roinvesting
+#    healthcheck:
+#      test: ["CMD", "strapi-mysql", "-U", "user", "--password=123456"]
+#      interval: 5s
+#      timeout: 2s
+#      retries: 5
+#
+#volumes:
+#  strapiDB-volume:
+#    name: strapiDB-volume
+#    driver: local
+#
+#networks:
+#  roinvesting:
+#    driver: bridge
