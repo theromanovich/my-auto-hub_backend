@@ -1,7 +1,4 @@
 export default ({ env }) => {
-  console.log('>>>>>>DATABASE_HOST', env('DATABASE_HOST'));
-  console.log('>>>>>>APP_KEYS', env('APP_KEYS'));
-
   return {
     connection: {
       client: 'mysql',

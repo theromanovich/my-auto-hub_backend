@@ -1,6 +1,4 @@
 module.exports = ({ env }) => {
-  console.log('>>>>CLOUDINARY_NAME:', env("CLOUDINARY_NAME"));
-
   return {
     upload: {
       config: {
