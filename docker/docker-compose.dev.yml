@@ -13,21 +13,21 @@ services:
       - /var/www/strapi-roinvesting/node_modules
     environment:
       - DATABASE_CLIENT=mysql
-      - DATABASE_HOST=mysql
+      - DATABASE_HOST=strapi-mysql
       - DATABASE_PORT=3306
       - DATABASE_NAME=strapi_roinvesting
       - DATABASE_USERNAME=user
       - DATABASE_PASSWORD=123456
     depends_on:
-      - mysql
+      - strapi-mysql
     ports:
       - "1337:1337"
     networks:
       - roinvesting
 
-  mysql:
+  strapi-mysql:
     image: mysql:8.0
-    container_name: mysql
+    container_name: strapi-mysql
     command:
       - --default-authentication-plugin=mysql_native_password
     environment:
@@ -40,7 +40,7 @@ services:
     networks:
       - roinvesting
     healthcheck:
-      test: ["CMD", "mysql", "-U", "user", "--password=123456"]
+      test: ["CMD", "strapi-mysql", "-U", "user", "--password=123456"]
       interval: 5s
       timeout: 2s
       retries: 5
