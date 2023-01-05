@@ -1,7 +1,6 @@
 
 PROD: docker-compose --env-file .env.prod -f docker-compose.prod.yml up
 DEV:  docker-compose --env-file .env.dev -f docker-compose.dev.yml up
-docker-compose -f docker-compose.dev.yml up
 
 Stop the container(s) using the following command:
 docker-compose down
