@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_default_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "H1": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "CtaButtonText": {
+      "type": "string"
+    },
+    "CtaButtonTextLink": {
+      "type": "string"
+    },
+    "HeroImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
