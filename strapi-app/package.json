@@ -18,6 +18,7 @@
     "@strapi/provider-upload-cloudinary": "^4.5.4",
     "@strapi/strapi": "4.5.3",
     "mysql": "2.18.1",
+    "strapi-plugin-country-select": "^1.0.0",
     "strapi-plugin-navigation": "^2.2.3",
     "strapi-plugin-ratings": "^1.1.9",
     "strapi-plugin-sitemap": "^2.0.9"
