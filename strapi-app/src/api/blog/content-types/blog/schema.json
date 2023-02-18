@@ -4,7 +4,8 @@
   "info": {
     "singularName": "blog",
     "pluralName": "blogs",
-    "displayName": "blog"
+    "displayName": "blog",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,10 @@
     },
     "PostText": {
       "type": "richtext"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "PostName"
     }
   }
 }
