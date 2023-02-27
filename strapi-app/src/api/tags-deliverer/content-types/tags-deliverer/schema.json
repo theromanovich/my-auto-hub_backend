@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tags_deliverers",
+  "info": {
+    "singularName": "tags-deliverer",
+    "pluralName": "tags-deliverers",
+    "displayName": "tags-deliverer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tag": {
+      "type": "string"
+    }
+  }
+}
