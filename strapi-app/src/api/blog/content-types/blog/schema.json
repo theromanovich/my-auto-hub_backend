@@ -37,6 +37,9 @@
     },
     "tags": {
       "type": "string"
+    },
+    "article": {
+      "type": "richtext"
     }
   }
 }
