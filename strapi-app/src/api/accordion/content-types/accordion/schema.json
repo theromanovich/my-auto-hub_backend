@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "accordions",
+  "info": {
+    "singularName": "accordion",
+    "pluralName": "accordions",
+    "displayName": "Accordion",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "paragraphs_accordions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::paragraphs-accordion.paragraphs-accordion",
+      "inversedBy": "accordions"
+    },
+    "cars": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cars.cars",
+      "inversedBy": "accordions"
+    },
+    "deliverer_cards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::deliverer-cards.deliverer-cards",
+      "mappedBy": "accordions"
+    }
+  }
+}

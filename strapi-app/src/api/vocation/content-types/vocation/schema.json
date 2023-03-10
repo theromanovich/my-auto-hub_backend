@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vocations",
+  "info": {
+    "singularName": "vocation",
+    "pluralName": "vocations",
+    "displayName": "vocation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "vocation": {
+      "type": "string"
+    },
+    "deliverer_cards": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::deliverer-cards.deliverer-cards",
+      "mappedBy": "vocations"
+    }
+  }
+}

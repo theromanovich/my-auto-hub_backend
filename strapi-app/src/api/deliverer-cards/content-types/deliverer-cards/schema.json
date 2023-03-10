@@ -59,6 +59,30 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "vocations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::vocation.vocation",
+      "inversedBy": "deliverer_cards"
+    },
+    "accordions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::accordion.accordion",
+      "inversedBy": "deliverer_cards"
+    },
+    "paragraphs_accordions": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::paragraphs-accordion.paragraphs-accordion",
+      "inversedBy": "deliverer_cards"
+    },
+    "cars": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::cars.cars",
+      "inversedBy": "deliverer_cards"
     }
   }
 }
