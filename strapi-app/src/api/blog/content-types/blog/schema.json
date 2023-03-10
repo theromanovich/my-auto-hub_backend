@@ -40,6 +40,12 @@
     },
     "article": {
       "type": "richtext"
+    },
+    "tags_blogs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tags-blog.tags-blog",
+      "inversedBy": "blogs"
     }
   }
 }

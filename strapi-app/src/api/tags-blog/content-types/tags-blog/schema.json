@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tags_blogs",
+  "info": {
+    "singularName": "tags-blog",
+    "pluralName": "tags-blogs",
+    "displayName": "tags-blog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tag": {
+      "type": "string"
+    },
+    "blogs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog.blog",
+      "inversedBy": "tags_blogs"
+    }
+  }
+}

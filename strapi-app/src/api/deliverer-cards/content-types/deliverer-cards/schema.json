@@ -50,13 +50,11 @@
     "premium": {
       "type": "boolean"
     },
-    "tags": {
-      "type": "string"
-    },
-    "tags_deliverer": {
+    "tags_deliverers": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::tags-deliverer.tags-deliverer"
+      "relation": "manyToMany",
+      "target": "api::tags-deliverer.tags-deliverer",
+      "mappedBy": "deliverer_cards"
     },
     "slug": {
       "type": "uid",
